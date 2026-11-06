@@ -5,15 +5,72 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    tools:visibility="visible">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_gravity="center"
+        android:layout_margin="24dp"
+        app:cardCornerRadius="20dp"
+        android:backgroundTint="@color/card_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+        <TextView
+            android:id="@+id/tvText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="26sp"
+            android:textColor="@color/text_color"
+            android:textStyle="bold"
+            android:text="TextView" />
+
+
+            <Button
+                android:id="@+id/btnChangeText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zmień teskt"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btnChangeColor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zmień kolor tekstu"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/btnChangeBg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Zmień tło"
+                android:layout_weight="1"/>
+
+            <Switch
+                android:id="@+id/switchNight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Tryb nocny" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/bgImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/tlo1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
