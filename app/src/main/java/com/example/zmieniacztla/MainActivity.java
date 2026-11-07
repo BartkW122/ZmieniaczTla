@@ -1,6 +1,8 @@
 package com.example.zmieniacztla;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -8,6 +10,7 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -16,9 +19,12 @@ import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
     private static boolean czyWidoczne;
-    private TextView tvText;
+    private static TextView tvText;
     private Button btnChangeText,btnChangeColor,btnChangeBg;
     private SwitchCompat switchNight;
+
+    private static int aktualnyIndexKoloru = 0;
+    private static int[] tablicaKolorow={R.color.text_color,R.color.text_opt2,R.color.text_opt3};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +38,15 @@ public class MainActivity extends AppCompatActivity {
         btnChangeText = findViewById(R.id.btnChangeText);
         btnChangeColor = findViewById(R.id.btnChangeColor);
         btnChangeBg = findViewById(R.id.btnChangeBg);
+
+        btnChangeColor.setOnClickListener(v->{
+            if(aktualnyIndexKoloru < tablicaKolorow.length-1) {
+                aktualnyIndexKoloru++;
+            }else {
+                aktualnyIndexKoloru = 0;
+            }
+            tvText.setTextColor(ContextCompat.getColor(MainActivity.this, tablicaKolorow[aktualnyIndexKoloru]));
+        });
 
         switchNight = findViewById(R.id.switchNight);
         System.out.println("Create:"+czyWidoczne);
@@ -57,6 +72,19 @@ public class MainActivity extends AppCompatActivity {
         czyWidoczne = false;
         System.out.println("Stop:"+czyWidoczne);
     }
+
+    private static  void zmianaKoloruTesktu(){
+        if(aktualnyIndexKoloru<tablicaKolorow.length-1) {
+            aktualnyIndexKoloru++;
+            System.out.println(aktualnyIndexKoloru);
+            tvText.setTextColor(tablicaKolorow[aktualnyIndexKoloru]);
+        }else {
+            aktualnyIndexKoloru = 0;
+            System.out.println(aktualnyIndexKoloru);
+            tvText.setTextColor(tablicaKolorow[aktualnyIndexKoloru]);
+        }
+    }
+
     //Do zrobienia
     private static  void  zmiananTlaAutomatycznie(){
         try {
