@@ -18,12 +18,14 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
+    private String[] texts = {"text1","text2","text3","text3"};
     private static boolean czyWidoczne;
     private static TextView tvText;
     private Button btnChangeText,btnChangeColor,btnChangeBg;
     private SwitchCompat switchNight;
 
     private static int aktualnyIndexKoloru = 0;
+    private static int aktualnyIndexTextu = 0;
     private static int[] tablicaKolorow={R.color.text_color,R.color.text_opt2,R.color.text_opt3};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         czyWidoczne = true;
 
         tvText = findViewById(R.id.tvText);
+        tvText.setText(texts[aktualnyIndexTextu]);
 
         btnChangeText = findViewById(R.id.btnChangeText);
         btnChangeColor = findViewById(R.id.btnChangeColor);
@@ -46,6 +49,16 @@ public class MainActivity extends AppCompatActivity {
                 aktualnyIndexKoloru = 0;
             }
             tvText.setTextColor(ContextCompat.getColor(MainActivity.this, tablicaKolorow[aktualnyIndexKoloru]));
+        });
+
+        btnChangeText.setOnClickListener(v->{
+            if(aktualnyIndexTextu < 2) {
+                aktualnyIndexTextu++;
+            }else {
+                aktualnyIndexTextu = 0;
+            }
+            System.out.println(aktualnyIndexTextu);
+            tvText.setText(texts[aktualnyIndexTextu]);
         });
 
         switchNight = findViewById(R.id.switchNight);
