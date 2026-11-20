@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -28,10 +29,13 @@ public class MainActivity extends AppCompatActivity {
     private static TextView tvText;
     private Button btnChangeText,btnChangeColor,btnChangeBg;
     private SwitchCompat switchNight;
+    private ImageView bgImage;
 
     private static int aktualnyIndexKoloru = 0;
     private static int aktualnyIndexTextu = 0;
+    private static int aktualnyIndexBg = 0;
     private static int[] tablicaKolorow={R.color.text_color,R.color.text_opt2,R.color.text_opt3};
+    private static int[] tablicaImg = {R.drawable.tlo1,R.drawable.tlo2};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         btnChangeText = findViewById(R.id.btnChangeText);
         btnChangeColor = findViewById(R.id.btnChangeColor);
         btnChangeBg = findViewById(R.id.btnChangeBg);
+
+        bgImage = findViewById(R.id.bgImage);
 
         btnChangeColor.setOnClickListener(v->{
             if(aktualnyIndexKoloru < tablicaKolorow.length-1) {
@@ -82,6 +88,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btnChangeBg.setOnClickListener(v->{
+            if(aktualnyIndexBg < 1) {
+                aktualnyIndexBg++;
+            }else {
+                aktualnyIndexBg = 0;
+            }
+            System.out.println(aktualnyIndexBg);
+            bgImage.setImageResource(tablicaImg[aktualnyIndexBg]);
+        });
+
         System.out.println("Create:"+czyWidoczne);
     }
 
