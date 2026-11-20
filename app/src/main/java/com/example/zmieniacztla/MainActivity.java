@@ -1,5 +1,6 @@
 package com.example.zmieniacztla;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,8 @@ import androidx.core.view.WindowInsetsCompat;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
-    private String[] texts = {"text1","text2","text3","text3"};
+    private Resources res;
+    private String[] texts;
     private static boolean czyWidoczne;
     private static TextView tvText;
     private Button btnChangeText,btnChangeColor,btnChangeBg;
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        res = getResources();
+        texts = res.getStringArray(R.array.textsArray);
 
         czyWidoczne = true;
 
@@ -60,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }else {
                 aktualnyIndexTextu = 0;
             }
+
             System.out.println(aktualnyIndexTextu);
             tvText.setText(texts[aktualnyIndexTextu]);
         });
