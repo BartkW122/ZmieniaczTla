@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -20,6 +21,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -29,6 +31,7 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity {
+    private CardView cardView;
     private static SensorManager sensorManager;
     private static Sensor czujnikSwiatla;
     private static SensorEventListener listener;
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        cardView = findViewById(R.id.blok);
 
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         czujnikSwiatla = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
@@ -127,6 +132,45 @@ public class MainActivity extends AppCompatActivity {
             }
             System.out.println(aktualnyIndexBg);
             bgImage.setImageResource(tablicaImg[aktualnyIndexBg]);
+        });
+
+        seekBarTranspText.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                float wartoscPrzezroczystosci = (float) i/10;
+                tvText.setAlpha(wartoscPrzezroczystosci);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        seekBarTranspBloku.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                int alpha = i * 255 / 100;
+
+                cardView.setCardBackgroundColor(
+                        Color.argb(alpha, 255, 255, 255)
+                );
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
         });
     }
 

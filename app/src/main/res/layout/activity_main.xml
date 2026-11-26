@@ -10,8 +10,10 @@
 
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/blok"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
         android:layout_gravity="center"
         android:layout_margin="24dp"
         app:cardCornerRadius="20dp"
@@ -83,6 +85,8 @@
                 android:id="@+id/seekBarTranspText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:progress="10"
+                android:max="10"
                 android:layout_margin="20px"/>
 
             <TextView
@@ -95,6 +99,8 @@
                 android:id="@+id/seekBarTranspBloku"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:progress="100"
+                android:max="100"
                 android:layout_margin="20px"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
