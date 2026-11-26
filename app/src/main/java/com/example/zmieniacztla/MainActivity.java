@@ -25,9 +25,10 @@ import java.util.concurrent.TimeUnit;
 public class MainActivity extends AppCompatActivity {
     private Resources res;
     private String[] texts;
+    private static boolean czyAutomatycznyTryb;
     private static boolean czyWidoczne;
     private static TextView tvText;
-    private Button btnChangeText,btnChangeColor,btnChangeBg;
+    private Button btnChangeText,btnChangeColor,btnChangeBg,btnTrybAuto;
     private SwitchCompat switchNight;
     private ImageView bgImage;
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         texts = res.getStringArray(R.array.textsArray);
 
         czyWidoczne = true;
+        czyAutomatycznyTryb = false;
 
         tvText = findViewById(R.id.tvText);
         tvText.setText(texts[aktualnyIndexTextu]);
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         btnChangeText = findViewById(R.id.btnChangeText);
         btnChangeColor = findViewById(R.id.btnChangeColor);
         btnChangeBg = findViewById(R.id.btnChangeBg);
+        btnTrybAuto = findViewById(R.id.btnTrybAuto);
 
         bgImage = findViewById(R.id.bgImage);
 
@@ -74,6 +77,16 @@ public class MainActivity extends AppCompatActivity {
 
             System.out.println(aktualnyIndexTextu);
             tvText.setText(texts[aktualnyIndexTextu]);
+        });
+
+        btnTrybAuto.setOnClickListener(v->{
+            if(!czyAutomatycznyTryb){
+                czyAutomatycznyTryb = true;
+                switchNight.setEnabled(!czyAutomatycznyTryb);
+            }else if(czyAutomatycznyTryb){
+                czyAutomatycznyTryb = false;
+                switchNight.setEnabled(!czyAutomatycznyTryb);
+            }
         });
 
         switchNight = findViewById(R.id.switchNight);

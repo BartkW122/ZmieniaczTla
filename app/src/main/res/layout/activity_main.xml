@@ -59,6 +59,13 @@
                 android:text="Zmień tło"
                 android:layout_weight="1"/>
 
+            <Button
+                android:id="@+id/btnTrybAuto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Auto-zmiana trybu"
+                android:layout_weight="1"/>
+
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/switchNight"
                 android:layout_width="match_parent"
