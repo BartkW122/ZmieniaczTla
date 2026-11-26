@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     private static TextView tvText;
     private Button btnChangeText,btnChangeColor,btnChangeBg,btnTrybAuto;
     private SwitchCompat switchNight;
+    private SeekBar seekBarTranspText,seekBarTranspBloku;
     private ImageView bgImage;
 
     private static int aktualnyIndexKoloru = 0;
@@ -67,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
         btnChangeColor = findViewById(R.id.btnChangeColor);
         btnChangeBg = findViewById(R.id.btnChangeBg);
         btnTrybAuto = findViewById(R.id.btnTrybAuto);
+
+        seekBarTranspText = findViewById(R.id.seekBarTranspText);
+        seekBarTranspBloku = findViewById(R.id.seekBarTranspBloku);
 
         bgImage = findViewById(R.id.bgImage);
 

@@ -72,6 +72,30 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Tryb nocny" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Przezroczystosc Tesktu" />
+
+            <SeekBar
+                android:id="@+id/seekBarTranspText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20px"/>
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Przezroczystosc bloku" />
+
+            <SeekBar
+                android:id="@+id/seekBarTranspBloku"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20px"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
